@@ -6,24 +6,28 @@ authors:
 lastUpdated: 2026-06-30
 ---
 
-**[GitHub Copilot CLI](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)** は、ターミナルで GitHub Copilot をエージェント型のコーディング アシスタントとして利用できるようにします。コードベースを探索し、コードを生成し、コマンドを実行し、外部ツールに接続できます。すべてコマンド ラインから行えるため、グラフィカル エディターに切り替えずに作業の流れを保てます。
+**[GitHub Copilot CLI][about-copilot-cli]** は、ターミナルで GitHub Copilot をエージェント型のコーディングアシスタントとして利用できるようにします。コードベースを探索し、コードを生成し、コマンドを実行し、外部ツールに接続できます。すべてコマンドラインから行えるため、グラフィカルエディターに切り替えずに作業の流れを保てます。
 
-これらの演習では、Copilot CLI のインストールと認証から始め、カスタム命令でプロジェクトのコンテキストを与えたうえで、プラン モードを使って意図的に機能を実装します。続いて Playwright MCP サーバーを接続し、実際のブラウザーでその機能をテストします。その後、再利用可能な agent skill と custom agent で Copilot を拡張します。最後に、コンテキスト管理、モデル選択、共有に使う slash command を確認し、作成した内容を振り返ります。また、[GitHub Copilot CLI と Foundry を使う全 3 モジュールのオプション シリーズ][foundry]では、モデルを準備し、ホスト型エージェントを構築してデプロイし、サイトに統合できます。
+このワークショップでは、Copilot CLI のインストールから始め、小さな星評価の変更を加えて最初のプルリクエストをマージします。続いて Plan モードでフィルターの要件を決め、Autopilot モードで実装し、Interactive モードでレビューします。リポジトリの指示を更新し、`quality-checks` スキルを調整し、Playwright MCP を使ってブラウザーで動作を確認します。QA カスタムエージェントで要件、テスト、検証結果をまとめ、Agent Merge でフィルター PR を処理します。最後に、コンテキスト管理、モデル選択、セッション共有、任意のクラウド委任に使うスラッシュコマンドを確認します。[Foundry を使うオプションの 3 モジュール シリーズ][foundry]では、モデルを準備し、カタログに基づくエージェントをデプロイして Web サイトに接続できます。
+
+ワークショップでは、星評価の変更と、指示・スキル・QA プロファイル・テストを含むフィルター機能の 2 つの PR を作成します。フィルターと品質ワークフローは、会話とブランチを共有します。
 
 ## 演習
 
 | 演習 | トピック | 説明 |
 |----------|-------|-------------|
-| [0. 前提条件][ex0] | セットアップ | リポジトリと codespace を作成する |
+| [0. 前提条件][ex0] | セットアップ | リポジトリと Codespace を作成する |
 | [1. Copilot CLI のインストール][ex1] | インストール | Copilot CLI をインストールして認証する |
-| [2. カスタム命令][ex2] | コンテキスト | 命令を追加し、Copilot CLI がどのように従うかを確認する |
-| [3. コード生成][ex3] | コード生成 | プラン モードを使って機能を生成する |
-| [4. Playwright MCP によるテスト][ex4] | 外部ツール | Playwright MCP サーバーを追加し、ブラウザーで機能をテストする |
-| [5. エージェント スキル][ex5] | スキル | 専門スキルで Copilot を強化する |
-| [6. カスタム エージェント][ex6] | エージェント | カスタム エージェントを確認して使用する |
-| [7. スラッシュ コマンド][ex7] | CLI 機能 | コンテキスト、モデル、共有、cloud agent への任意の委任を確認する |
-| [9. 振り返り][ex9] | まとめ | 重要な概念と次のステップを確認する |
-| [オプション: Foundry を組み込む][foundry] | ホスト型エージェント | モデルを準備し、カタログに基づいた Backer Concierge を構築してデプロイし、Web サイトに接続する |
+| [2. 星評価を追加する: 小さな改善][ex2] | 最初の変更 | 既存の評価と未評価時の表示を追加し、最初の PR をマージする |
+| [3. エージェントモード: Plan と Autopilot][ex3] | エージェントモード | Issue から機能を計画し、Autopilot で構築して Interactive モードでレビューする |
+| [4. カスタム指示で Copilot を導く][ex4] | コンテキスト | 指示を確認・更新し、フィルター機能に適用する |
+| [5. quality-checks スキルをカスタマイズして使う][ex5] | 繰り返し可能なチェック | 既存スキルのレポート形式を変更して実行する |
+| [6. Playwright MCP で機能を検証する][ex6] | ブラウザー確認 | CLI で MCP を設定し、ブラウザーでフィルターを確認する |
+| [7. QA エージェントを作成して使う][ex7] | 要件とカバレッジ | 専門プロファイルを作成して選び、最終検証の根拠を集める |
+| [8. 機能 PR を作成してマージする][ex8] | レビューとマージ | 変更全体をレビューし、PR を作成して Agent Merge を使う |
+| [9. GitHub Copilot CLI のスラッシュコマンド][ex9] | CLI 機能 | コンテキスト、モデル、共有、クラウドへの任意の委任を確認する |
+| [10. まとめと次のステップ][ex10] | まとめ | ワークフロー、再利用可能なカスタマイズ、参考資料を振り返る |
+| [任意: Foundry を取り入れる][foundry] | ホスト型エージェント | モデルを準備し、カタログに基づくエージェントをデプロイしてサイトに接続する |
 
 ## 前提条件
 
@@ -47,11 +51,14 @@ lastUpdated: 2026-06-30
 
 [ex0]: 0-prerequisites/
 [ex1]: 1-install-copilot-cli/
-[ex2]: 2-custom-instructions/
-[ex3]: 3-generating-code/
-[ex4]: 4-mcp/
+[about-copilot-cli]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli
+[ex2]: 2-add-star-rating/
+[ex3]: 3-agent-modes/
+[ex4]: 4-custom-instructions/
 [ex5]: 5-agent-skills/
-[ex6]: 6-custom-agents/
-[ex7]: 7-slash-commands/
+[ex6]: 6-mcp-playwright/
+[ex7]: 7-qa-agent/
+[ex8]: 8-create-pull-request/
+[ex9]: 9-cli-power-tools/
+[ex10]: 10-review/
 [foundry]: 8-foundry-agent/
-[ex9]: 9-review/

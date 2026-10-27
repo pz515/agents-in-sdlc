@@ -1,6 +1,6 @@
 ---
 slug: pt-br/real-world-development/vscode
-title: "VS Code"
+title: "Visual Studio Code"
 authors:
   - geektrainer
 lastUpdated: 2026-06-30
@@ -14,13 +14,13 @@ Você começará adicionando instruções personalizadas e observando o Copilot 
 
 | Exercício | Tema | Descrição |
 |----------|-------|-------------|
-| [0. Pré-requisitos][ex0] | Configuração | Crie seu repositório e seu codespace |
+| [0. Pré-requisitos][ex0] | Configuração | Crie seu repositório e Codespace |
 | [1. Instruções personalizadas][ex1] | Contexto | Adicione e verifique instruções personalizadas no VS Code |
-| [2. Modo de agente][ex2] | Geração de código | Crie uma funcionalidade de filtragem com o modo de agente |
-| [3. MCP com Playwright][ex3] | Ferramentas externas | Teste a funcionalidade em um navegador com o servidor MCP do Playwright |
+| [2. Modo de agente][ex2] | Geração de código | Crie um recurso de filtragem com o modo de agente |
+| [3. MCP com Playwright][ex3] | Ferramentas externas | Teste o recurso em um navegador com o servidor MCP do Playwright |
 | [4. Agentes personalizados][ex4] | Agentes especializados | Revise e use agentes personalizados |
-| [5. Gerenciamento de agentes][ex5] | Monitoramento | Monitore e oriente sessões de agentes |
-| [6. Iteração][ex6] | Revisão | Revise o trabalho do Copilot localmente e escolha os próximos passos |
+| [5. Gerenciar agentes][ex5] | Monitoramento | Acompanhe e oriente sessões de agentes |
+| [6. Iterar][ex6] | Revisão | Revise localmente o trabalho do Copilot e escolha os próximos passos |
 | [Opcional: Incorporar o Foundry][foundry-toolkit] | Agentes de IA | Prepare um modelo, implante um agente e conecte-o ao site em três módulos com o VS Code e o Foundry Toolkit |
 
 ## Pré-requisitos
